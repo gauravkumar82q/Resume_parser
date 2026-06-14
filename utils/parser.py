@@ -9,14 +9,9 @@ import spacy
 
 
 # ---------------------------------------------------------------------------
-# Load spaCy model (downloaded via: python -m spacy download en_core_web_sm)
+# Load spaCy model — installed via requirements.txt as a pip package
 # ---------------------------------------------------------------------------
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    import subprocess, sys
-    subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"], check=True)
-    nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm")
 
 
 # ---------------------------------------------------------------------------
