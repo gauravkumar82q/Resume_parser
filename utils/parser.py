@@ -9,9 +9,13 @@ import spacy
 
 
 # ---------------------------------------------------------------------------
-# Load spaCy model — installed via requirements.txt as a pip package
+# Load spaCy model. If unavailable, fall back to a blank English pipeline
+# so cloud deploys don't fail due to model wheel compatibility.
 # ---------------------------------------------------------------------------
-nlp = spacy.load("en_core_web_sm")
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    nlp = spacy.blank("en")
 
 
 # ---------------------------------------------------------------------------
